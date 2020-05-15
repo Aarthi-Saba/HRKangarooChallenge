@@ -57,24 +57,14 @@ namespace HRKangarooChallenge
     {
         static string kangaroo(int x1, int v1, int x2, int v2)
         {
-            string result = "NO";
-            double diff = (x1 - x2) % (v2 - v1); // diff is the point where 2 kangaroos can possibly meet
-            if (v2 > v1) // if Kangaroo 2 moves faster than kangaroo 1,then there is no possibility of meeting at same point
+            if (v2 < v1 && (x1 - x2) % (v1 - v2) == 0)
             {
-                result = "NO";
+                return "YES";
             }
-            else if (diff == 0) // When there is possibility that kangaroos can meet
+            else
             {
-                if (diff == Math.Round(diff) && diff > 0) // We are ensuring that kangaroos meet at ground and they are at same direction
-                {
-                    result = "YES";
-                }
-                else // When diff is not integer and decimal ,then kangaroos are at air
-                {
-                    result = "NO";
-                }
+                return "NO";
             }
-            return result;
 
         }
 
